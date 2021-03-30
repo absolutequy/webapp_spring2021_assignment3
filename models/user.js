@@ -9,6 +9,7 @@ userSchema = mongoose.Schema({
     securityQuestion: String,
     securityAnswer: String,
     gender: String,
+    location: String,
     description: String
 });
 

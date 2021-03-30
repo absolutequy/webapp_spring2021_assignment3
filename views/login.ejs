@@ -1,6 +1,6 @@
 <div class="container">
     <div class="login-container">
-        <form>
+        <form action="/loginuser" method="POST">
             <h3>LOGIN</h3>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
@@ -9,7 +9,7 @@
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                    name="passowrd">
+                    name="password">
                 <label for="floatingPassword">Password</label>
             </div>
 
@@ -29,7 +29,7 @@
             </div>
 
             <div class="btn-box">
-                <button type="button" @click="login">Log in</button>
+                <button type="submit" @click="login">Log in</button>
             </div>
 
         </form>

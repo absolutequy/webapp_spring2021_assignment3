@@ -21,6 +21,7 @@ var contacts = [
         securityQuestion: "something",
         securityAnswer: "something",
         gender: "Male",
+        location: "USA",
         description: "Some guy that lives in a world"
     },
     {
@@ -33,6 +34,7 @@ var contacts = [
         securityQuestion: "something",
         securityAnswer: "something",
         gender: "Male",
+        location: "USA",
         description: "Made a book to help make web apps"
     },
     {
@@ -45,6 +47,7 @@ var contacts = [
         securityQuestion: "something",
         securityAnswer: "something",
         gender: "Male",
+        location: "Canada",
         description: "A dud"
     },
     {
@@ -57,6 +60,7 @@ var contacts = [
         securityQuestion: "something",
         securityAnswer: "something",
         gender: "Female",
+        location: "USA",
         description: "Singer in a world"
     }
 ];

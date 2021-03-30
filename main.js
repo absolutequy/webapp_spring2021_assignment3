@@ -1,6 +1,7 @@
 const express = require("express"), app = express(),
 homeController = require("./controllers/homeController"),
 usersController = require("./controllers/usersController"),
+errorController = require("./controllers/errorController"),
 layouts = require("express-ejs-layouts"),
 mongoose = require("mongoose");
 
@@ -28,8 +29,12 @@ app.use(express.json());
 
 app.get("/signup", usersController.showSignup);
 app.get("/login", usersController.showLogin);
+app.post("/loginuser", usersController.loginUser);
 app.get("/feed", homeController.showFeed);
 app.get("/profile", homeController.showProfile);
+
+app.use(errorController.pageNotFoundError);
+app.use(errorController.internalServerError);
 
 app.listen(app.get("port"), ()=>{
     console.log(`Server is running on port: ${app.get("port")}`)
