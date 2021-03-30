@@ -28,6 +28,7 @@ app.use(
 app.use(express.json());
 
 app.get("/signup", usersController.showSignup);
+app.post("/signingUp", usersController.signingUp);
 app.get("/login", usersController.showLogin);
 app.post("/loginuser", usersController.loginUser);
 app.get("/feed", homeController.showFeed);

@@ -1,23 +1,16 @@
 <div class="container">
     <div class="signup-container">
-        <div class="step-row">
-            <div id="progress"></div>
-            <div class="step-col"><small>Basic Info</small></div>
-            <div class="step-col"><small>Account</small></div>
-            <div class="step-col"><small>Recovery</small></div>
-            <div class="step-col"><small>Other</small></div>
-        </div>
         <h3>CREATE ACCOUNT</h3>
         <div id="app">
-            <form class="form" id="form1">
+            <form class="form" onsubmit="return validateForm()" id="form1" action="/signingUp" method="POST" novalidate>
                 <div class="form-floating mb-3">
-                    <input v-model="fname" type="text" class="form-control" id="floatingInput"
-                        placeholder="First name" name="fname">
+                    <input v-model="fname" type="text" class="form-control" id="floatingInput" placeholder="First name"
+                        name="fname" required>
                     <label for="floatingInput">First Name</label>
                 </div>
                 <div class="form-floating">
                     <input v-model="lname" type="text" class="form-control" id="floatingPassword"
-                        placeholder="Last name" name="lname">
+                        placeholder="Last name" name="lname" required>
                     <label for="floatingInput">Last Name</label>
                 </div>
                 <label id="bday">Birthday</label>
@@ -25,7 +18,7 @@
                     <div class="row">
                         <div class="col-sm">
                             <select v-model="bday_month" class="form-select" aria-label="Default select example"
-                                name="dob_month">
+                                name="dob_month" required>
                                 <option selected="1">Jan</option>
                                 <option value="2">Feb</option>
                                 <option value="3">Mar</option>
@@ -42,7 +35,7 @@
                         </div>
                         <div class="col-sm">
                             <select v-model="bday_day" class="form-select" aria-label="Default select example"
-                                name="dob_day">
+                                name="dob_day" required>
                                 <option selected="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -78,7 +71,7 @@
                         </div>
                         <div class="col-sm">
                             <select v-model="bday_year" class="form-select" aria-label="Default select example"
-                                name="dob_year">
+                                name="dob_year" required>
                                 <option selected=2021> 2021 </option>
                                 <option value=2020> 2020 </option>
                                 <option value=2019> 2019 </option>
@@ -208,28 +201,19 @@
 
                 <p class="text-danger" id="errorMessage1"></p>
 
-                <div class="btn-box">
-                    <button type="button" id="next1">Next</button>
-                </div>
-
-            </form>
-
-
-
-            <form class="form" id="form2">
                 <div class="form-floating mb-3">
-                    <input v-model="username" type="text" class="form-control" id="floatingInput"
-                        placeholder="Username" name="username">
+                    <input v-model="username" type="text" class="form-control" id="floatingInput" placeholder="Username"
+                        name="username" required>
                     <label for="floatingInput">Username</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input v-model="email" type="email" class="form-control" id="floatingInput" placeholder="Email"
-                        name="email">
+                        name="email" required>
                     <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input v-model="password" @change="checkPassword" type="password" class="form-control" id="floatingInput"
-                        placeholder="Password" name="password">
+                    <input v-model="password" @change="checkPassword" type="password" class="form-control"
+                        id="floatingInput" placeholder="Password" name="password" required>
                     <label for="floatingInput">Password</label>
                     <p v-show="showPwdError" class="text-danger">
                         The password can only and have one of each of the following a-z, A-Z, and 0-9.
@@ -237,8 +221,8 @@
 
                 </div>
                 <div class="form-floating mb-3">
-                    <input v-model="conf_password" @change="checkConfirmPassword" type="password" class="form-control" id="floatingInput"
-                        placeholder="Confirm Password" name= "conf_password">
+                    <input v-model="conf_password" @change="checkConfirmPassword" type="password" class="form-control"
+                        id="floatingInput" placeholder="Confirm Password" name="conf_password" required>
                     <label for="floatingInput">Confirm Password</label>
                     <p v-show="showConfPwdError" class="text-danger">Confirm password does not match your password.
                     </p>
@@ -247,83 +231,72 @@
 
                 <p class="text-danger" id="errorMessage2"></p>
 
-                <div class="btn-box">
-                    <button type="button" id="back1">Back</button>
-                    <button type="button" id="next2">Next</button>
-                </div>
-            </form>
 
-            <form class="form" id="form3">
-                <label id="bday">Security Question</label>
-                <select v-model="security_question" @change="selectedQuestion" class="form-select" aria-label="Default select example"
-                    name="security_question">
-                    <option value="1">What is the street you grew up on?</option>
-                    <option value="2">What is your favorite sports team?</option>
-                    <option value="3">What is your mother's maiden name?</option>
-                </select>
-                <div v-show="showAnswerBox" class="form-floating mb-3">
-                    <input v-model="security_answer"  type="text" class="form-control" id="floatingInput" placeholder="answer" name="answer">
-                    <label for="floatingInput">Answer</label>
-                </div>
+                <form class="form" id="form3">
+                    <label id="bday">Security Question</label>
+                    <select v-model="security_question" @change="selectedQuestion" class="form-select"
+                        aria-label="Default select example" name="security_question" required>
+                        <option value="1">What is the street you grew up on?</option>
+                        <option value="2">What is your favorite sports team?</option>
+                        <option value="3">What is your mother's maiden name?</option>
+                    </select>
+                    <div v-show="showAnswerBox" class="form-floating mb-3">
+                        <input v-model="security_answer" type="text" class="form-control" id="floatingInput"
+                            placeholder="answer" name="security_answer" required>
+                        <label for="floatingInput">Answer</label>
+                    </div>
 
-                <p class="text-danger" id="errorMessage3"></p>
+                    <p class="text-danger" id="errorMessage3"></p>
 
-                <div class="btn-box">
-                    <button type="button" id="back2">Back</button>
-                    <button type="button" id="next3">Next</button>
-                </div>
-            </form>
-
-            <form class="form" id="form4">
-                <label id="bday">Gender</label>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="form-check">
-                                <input v-model="gender" class="form-check-input" type="radio"
-                                    name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Male
-                                </label>
+                    <label id="bday">Gender</label>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-check">
+                                    <input v-model="gender" class="form-check-input" type="radio"
+                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Male
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="form-check">
-                                <input v-model="gender" class="form-check-input" type="radio"
-                                    name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Female
-                                </label>
+                            <div class="col-sm">
+                                <div class="form-check">
+                                    <input v-model="gender" class="form-check-input" type="radio"
+                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Female
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="form-check">
-                                <input v-model="gender" class="form-check-input" type="radio"
-                                    name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Other
-                                </label>
+                            <div class="col-sm">
+                                <div class="form-check">
+                                    <input v-model="gender" class="form-check-input" type="radio"
+                                        name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Other
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-floating mb-3">
-                    <input v-model="location" type="text" class="form-control" id="floatingInput"
-                        placeholder="answer" name="answer">
-                    <label for="floatingInput">Location</label>
-                </div>
+                    <div class="form-floating mb-3">
+                        <input v-model="location" type="text" class="form-control" id="floatingInput"
+                            placeholder="answer" name="location">
+                        <label for="floatingInput">Location</label>
+                    </div>
 
-                <div class="form-floating">
-                    <textarea class="form-control" placeholder="Tell something about yourself"
-                        id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Biography</label>
-                </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Tell something about yourself"
+                            id="floatingTextarea2" name = "bio" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Biography</label>
+                    </div>
 
-                <div class="btn-box">
-                    <button type="button" id="back3">Back</button>
-                    <button type="button" id="submit">Submit</button>
-                </div>
-            </form>
+                    <div class="btn-box">
+                        <button type="submit" id="submit">Submit</button>
+                    </div>
+
+                </form>
         </div>
         <div class="form-nav-container">
 
