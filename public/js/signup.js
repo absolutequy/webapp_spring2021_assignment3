@@ -148,7 +148,7 @@ function validateForm() {
 		document.getElementById("errorMessage3").innerHTML = "All fields must be filled out.";
 		formIsValid = false;
 	}
-	return formIsValid;
+	//return formIsValid;
 }
 
 next1.onclick = function () {

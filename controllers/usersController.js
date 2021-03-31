@@ -6,6 +6,8 @@ var loginError = {
     description: "Email or password is incorrect!"
 };
 
+var includeChars = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{3,}$/;
+
 exports.showSignup = (req, res) => {
     res.render("signup")
 };
@@ -89,6 +91,18 @@ exports.signingUp = (req, res) => {
     if (req.body.conf_password === "") {
         errors.push({
             description: "You must confirm your password"
+        });
+        noError = false;
+    }
+    if(!includeChars.test(req.body.password)){
+        errors.push({
+            description: "Password must include [a-z], [A-Z], and [0-9]"
+        });
+        noError = false;
+    }
+    if(req.body.password !== req.body.conf_password){
+        errors.push({
+            description: "Password and password confirmation must match"
         });
         noError = false;
     }
