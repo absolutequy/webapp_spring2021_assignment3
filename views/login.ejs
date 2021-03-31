@@ -2,6 +2,9 @@
     <div class="login-container">
         <form action="/loginuser" method="POST">
             <h3>LOGIN</h3>
+            <% if(typeof loginMessage !== "undefined") {%>
+                <p class="text-danger"><%= loginMessage.description %></p>
+            <%} %>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
                     name="email">

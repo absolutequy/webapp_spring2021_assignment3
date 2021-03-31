@@ -1,6 +1,11 @@
 <div class="container">
     <div class="signup-container">
         <h3>CREATE ACCOUNT</h3>
+        <% if(typeof errorMessages !== "undefined") {%>
+            <% errorMessages.forEach(message=>{ %>
+                <p class="text-danger"><%= message.description %></p>
+            <% }) %>
+        <%} %>
         <div id="app">
             <form class="form" onsubmit="return validateForm()" id="form1" action="/signingUp" method="POST" novalidate>
                 <div class="form-floating mb-3">

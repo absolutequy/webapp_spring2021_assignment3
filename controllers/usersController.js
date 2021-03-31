@@ -35,6 +35,7 @@ exports.loginUser = (req, res) => {
 };
 
 exports.signingUp = (req, res) => {
+    let noError = true;
     let dob = req.body.dob_month + "/" + req.body.dob_day + "/" + req.body.dob_year;
     let newUser = new User({
         firstName: req.body.fname,
@@ -49,66 +50,71 @@ exports.signingUp = (req, res) => {
         location: req.body.location,
         description: req.body.bio
     });
-    if (req.body.fname == undefined) {
+    if (req.body.fname === "") {
         errors.push({
             description: "You must enter in a first name"
         });
-        res.render("signup", {errorMessages: errors});
+        noError = false;
     }
-    else if (req.body.lname == undefined) {
+    if (req.body.lname === "") {
         errors.push({
             description: "You must enter in a last name"
         });
-        res.render("signup");
+        noError = false;
     }
-    else if (dob == undefined) {
+    if (dob === "") {
         errors.push({
             description: "You must enter in a date of birth"
         });
-        res.render("signup");
+        noError = false;
     }
-    else if (req.body.username == undefined) {
+    if (req.body.username === "") {
         errors.push({
             description: "You must enter in a username"
         });
-        res.render("signup");
+        noError = false;
     }
-    else if (req.body.email == undefined) {
+    if (req.body.email === "") {
         errors.push({
             description: "You must enter in an email"
         });
-        res.render("signup");
+        noError = false;
     }
-    else if (req.body.password == undefined) {
+    if (req.body.password === "") {
         errors.push({
             description: "You must enter in a password"
         });
-        res.render("signup");
+        noError = false;
     }
-    else if (req.body.conf_password == undefined) {
+    if (req.body.conf_password === "") {
         errors.push({
             description: "You must confirm your password"
         });
-        res.render("signup");
+        noError = false;
     }
-    else if (req.body.security_question == undefined) {
+    if (req.body.security_question === "") {
         errors.push({
             description: "You must choose a security question"
         });
-        res.render("signup");
+        noError = false;
     }
-    else if (req.body.security_answer == undefined) {
+    if (req.body.security_answer === "") {
         errors.push({
             description: "You must enter an answer for the security question"
         });
-        res.render("signup");
+        noError = false;
     }
-    else {
+    if(noError){
         newUser.save()
             .then(() => {
                 res.render("thanks");
             })
             .catch(error => { res.send(error) });
+    }
+    else {
+        console.log("Errors found in sign up");
+        res.render("signup", {errorMessages:errors});
+        errors = [];
     }
 
 }
