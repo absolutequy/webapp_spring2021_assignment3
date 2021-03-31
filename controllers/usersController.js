@@ -1,5 +1,11 @@
 const User = require("../models/user")
 
+var errors = [];
+
+var loginError = {
+    description: "Email or password is incorrect!"
+};
+
 exports.showSignup = (req, res) => {
     res.render("signup")
 };
@@ -19,7 +25,7 @@ exports.loginUser = (req, res) => {
             }
             else {
                 console.log("Email or password is incorrect");
-                res.render("login");
+                res.render("login",{loginMessage:loginError});
             }
         })
         .catch(error => {
@@ -44,30 +50,57 @@ exports.signingUp = (req, res) => {
         description: req.body.bio
     });
     if (req.body.fname == undefined) {
-        res.render("signup");
+        errors.push({
+            description: "You must enter in a first name"
+        });
+        res.render("signup", {errorMessages: errors});
     }
     else if (req.body.lname == undefined) {
+        errors.push({
+            description: "You must enter in a last name"
+        });
         res.render("signup");
     }
     else if (dob == undefined) {
+        errors.push({
+            description: "You must enter in a date of birth"
+        });
         res.render("signup");
     }
     else if (req.body.username == undefined) {
+        errors.push({
+            description: "You must enter in a username"
+        });
         res.render("signup");
     }
     else if (req.body.email == undefined) {
+        errors.push({
+            description: "You must enter in an email"
+        });
         res.render("signup");
     }
     else if (req.body.password == undefined) {
+        errors.push({
+            description: "You must enter in a password"
+        });
         res.render("signup");
     }
     else if (req.body.conf_password == undefined) {
+        errors.push({
+            description: "You must confirm your password"
+        });
         res.render("signup");
     }
     else if (req.body.security_question == undefined) {
+        errors.push({
+            description: "You must choose a security question"
+        });
         res.render("signup");
     }
     else if (req.body.security_answer == undefined) {
+        errors.push({
+            description: "You must enter an answer for the security question"
+        });
         res.render("signup");
     }
     else {
