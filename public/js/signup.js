@@ -16,6 +16,96 @@ var progress = document.getElementById("progress")
 var submit = document.getElementById("submit")
 
 function validateForm() {
+	var firstname = document.querySelector(".firstname");
+	var lastname = document.querySelector(".lastname");
+	var dob1 = document.querySelector(".dob1");
+	var dob2 = document.querySelector(".dob2");
+	var dob3 = document.querySelector(".dob3");
+	var username1 = document.querySelector(".username");
+	var password1 = document.querySelector(".password");
+	var conf_password1 = document.querySelector(".conf_password");
+	var security_question1 = document.querySelector(".security_question");
+	var security_answer = document.querySelector(".security_answer");
+	var email1 = document.querySelector(".email");
+
+	if(firstname.value == ""){
+		firstname.classList.add("hasError");
+	}
+	else{
+		firstname.classList.remove("hasError");
+	}
+
+	if(lastname.value == ""){
+		lastname.classList.add("hasError");
+	}
+	else{
+		lastname.classList.remove("hasError");
+	}
+
+	if(dob1.value == ""){
+		dob1.classList.add("hasError");
+	}
+	else{
+		dob1.classList.remove("hasError");
+	}
+
+	if(dob2.value == ""){
+		dob2.classList.add("hasError");
+	}
+	else{
+		dob2.classList.remove("hasError");
+	}
+
+	if(dob3.value == ""){
+		dob3.classList.add("hasError");
+	}
+	else{
+		dob3.classList.remove("hasError");
+	}
+
+	if(username1.value == ""){
+		username1.classList.add("hasError");
+	}
+	else{
+		username1.classList.remove("hasError");
+	}
+
+	if(password1.value == ""){
+		password1.classList.add("hasError");
+	}
+	else{
+		password1.classList.remove("hasError");
+	}
+
+	if(conf_password1.value == ""){
+		conf_password1.classList.add("hasError");
+	}
+	else{
+		coonf_password1.classList.remove("hasError");
+	}
+
+	if(security_question1.value == ""){
+		security_question1.classList.add("hasError");
+	}
+	else{
+		security_question1.classList.remove("hasError");
+	}
+
+	if(security_answer.value == ""){
+		security_answer.classList.add("hasError");
+	}
+	else{
+		security_answer.classList.remove("hasError");
+	}
+
+	if(email1.value == ""){
+		email1.classList.add("hasError");
+	}
+	else{
+		email1.classList.remove("hasError");
+	}
+
+
 	var fname = document.getElementsByName("fname")[0].value;
 	var lname = document.getElementsByName("lname")[0].value;
 	var dob_month = document.getElementsByName("dob_month")[0].value;

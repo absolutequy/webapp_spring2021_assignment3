@@ -308,5 +308,5 @@ form button{
 /* Error Handling */
 
 .hasError{
-  background-color: yellow;
+  background-color: lightcoral;
 }

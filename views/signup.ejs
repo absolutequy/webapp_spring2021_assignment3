@@ -4,12 +4,12 @@
         <div id="app">
             <form class="form" onsubmit="return validateForm()" id="form1" action="/signingUp" method="POST" novalidate>
                 <div class="form-floating mb-3">
-                    <input v-model="fname" type="text" class="form-control" id="floatingInput" placeholder="First name"
+                    <input v-model="fname" type="text" class="form-control firstname" id="floatingInput" placeholder="First name"
                         name="fname" required>
                     <label for="floatingInput">First Name</label>
                 </div>
                 <div class="form-floating">
-                    <input v-model="lname" type="text" class="form-control" id="floatingPassword"
+                    <input v-model="lname" type="text" class="form-control lastname" id="floatingPassword"
                         placeholder="Last name" name="lname" required>
                     <label for="floatingInput">Last Name</label>
                 </div>
@@ -17,7 +17,7 @@
                 <div class="date-field">
                     <div class="row">
                         <div class="col-sm">
-                            <select v-model="bday_month" class="form-select" aria-label="Default select example"
+                            <select v-model="bday_month" class="form-select dob1" aria-label="Default select example"
                                 name="dob_month" required>
                                 <option selected="1">Jan</option>
                                 <option value="2">Feb</option>
@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <div class="col-sm">
-                            <select v-model="bday_day" class="form-select" aria-label="Default select example"
+                            <select v-model="bday_day" class="form-select dob2" aria-label="Default select example"
                                 name="dob_day" required>
                                 <option selected="1">1</option>
                                 <option value="2">2</option>
@@ -70,7 +70,7 @@
                             </select>
                         </div>
                         <div class="col-sm">
-                            <select v-model="bday_year" class="form-select" aria-label="Default select example"
+                            <select v-model="bday_year" class="form-select dob3" aria-label="Default select example"
                                 name="dob_year" required>
                                 <option selected=2021> 2021 </option>
                                 <option value=2020> 2020 </option>
@@ -202,17 +202,17 @@
                 <p class="text-danger" id="errorMessage1"></p>
 
                 <div class="form-floating mb-3">
-                    <input v-model="username" type="text" class="form-control" id="floatingInput" placeholder="Username"
+                    <input v-model="username" type="text" class="form-control username" id="floatingInput" placeholder="Username"
                         name="username" required>
                     <label for="floatingInput">Username</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input v-model="email" type="email" class="form-control" id="floatingInput" placeholder="Email"
+                    <input v-model="email" type="email" class="form-control email" id="floatingInput" placeholder="Email"
                         name="email" required>
                     <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input v-model="password" @change="checkPassword" type="password" class="form-control"
+                    <input v-model="password" @change="checkPassword" type="password" class="form-control password"
                         id="floatingInput" placeholder="Password" name="password" required>
                     <label for="floatingInput">Password</label>
                     <p v-show="showPwdError" class="text-danger">
@@ -221,7 +221,7 @@
 
                 </div>
                 <div class="form-floating mb-3">
-                    <input v-model="conf_password" @change="checkConfirmPassword" type="password" class="form-control"
+                    <input v-model="conf_password" @change="checkConfirmPassword" type="password" class="form-control conf_password"
                         id="floatingInput" placeholder="Confirm Password" name="conf_password" required>
                     <label for="floatingInput">Confirm Password</label>
                     <p v-show="showConfPwdError" class="text-danger">Confirm password does not match your password.
@@ -234,14 +234,14 @@
 
                 <form class="form" id="form3">
                     <label id="bday">Security Question</label>
-                    <select v-model="security_question" @change="selectedQuestion" class="form-select"
+                    <select v-model="security_question" @change="selectedQuestion" class="form-select security_question"
                         aria-label="Default select example" name="security_question" required>
                         <option value="1">What is the street you grew up on?</option>
                         <option value="2">What is your favorite sports team?</option>
                         <option value="3">What is your mother's maiden name?</option>
                     </select>
                     <div v-show="showAnswerBox" class="form-floating mb-3">
-                        <input v-model="security_answer" type="text" class="form-control" id="floatingInput"
+                        <input v-model="security_answer" type="text" class="form-control security_answer" id="floatingInput"
                             placeholder="answer" name="security_answer" required>
                         <label for="floatingInput">Answer</label>
                     </div>
