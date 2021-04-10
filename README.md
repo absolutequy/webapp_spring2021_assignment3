@@ -3,16 +3,16 @@
 Assignment 3 - Creating MVC architecture for social networking website
 Author: Fernando Campos
 
-How tasks were split
+### How tasks were split
 
 Fernando was responsible for doing every task in the assignment. 
 
-Modifications
+### Modifications
 
 Due to the complexity of the sign up form that we had implemented previously, we decided to change the sign up form to
 be on one page for simplicity in sending the information to our mongoDB database along with validations and error checking.
 
-How to install and launch the project
+### How to install and launch the project
 
 make sure mongoDB is installed on your system and is on the PATH variable
 once cloned, run: npm install in the project directory
@@ -22,7 +22,7 @@ Go to your browser, go to localhost:3000 to see the webapp
 No other steps are needed to create the database as we have mongoose, which will create the database for us once we
 run the webapp
 
-Design Choices
+### Design Choices
 
 We decided to make a simple MVC architecture, as we realize that we will need to update our webapp to use CRUD models.
 In terms of the layout and overall scheme of the webapp, nothing has changed. The only pages that we modified were
@@ -40,7 +40,7 @@ the error controller handles the 404 and 500 http errors. For the error pages, w
 an error went wrong with the application. Overall the general files that were needed for the webapp just had to be referenced differently while
 also moving them to new locations that allow for readability. 
 
-Future Plans
+### Future Plans
 
 For our web application, we plan to change the overall structure of the project by using CRUD models and adding in sessions, cookies, user authentication
 with passport, functionality to post social media text (for example, a tweet), and changing the way errors are handled with express-validator. Posts that users 
